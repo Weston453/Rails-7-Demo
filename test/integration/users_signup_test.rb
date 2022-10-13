@@ -12,7 +12,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_response :unprocessable_entity
     assert_template 'users/new'
-    assert_select 'div#erro_explanation'
+    assert_select 'div#error_explanation'
     assert_select 'div.field_with_errors'
   end
 
@@ -25,6 +25,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'users/show'
-    assert_not flash.empty?
+    assert is_logged_in?
   end
 end

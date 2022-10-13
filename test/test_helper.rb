@@ -1,4 +1,4 @@
-ENV["RAILS_ENV"] ||= "test"
+ENV['RAILS_ENV'] ||= 'test'
 require_relative "../config/environment"
 require "rails/test_help"
 require "minitest/reporters"
@@ -10,7 +10,10 @@ class ActiveSupport::TestCase
 
   # Set up all fixtures in test/fixtures/*.yml.
   fixtures :all
-  include ApplicationHelper
+  # include ApplicationHelper
 
-  # Add more helper methods to be used by all tests here...
+  # Returns true if a test user is logged in.
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
 end
